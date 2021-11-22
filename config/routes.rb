@@ -1,4 +1,3 @@
 Rails.application.routes.draw do
-  root to: 'posts#index'
-
+    root to: 'goods#index'
 end
