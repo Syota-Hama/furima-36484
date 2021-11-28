@@ -37,8 +37,8 @@
 ## purchaseテーブル
 |Column|Type|Options|
 |-----------|-------|-----------------------------|
-|user       |string |null: false, foregn_key: true|
-|goods      |string |null: false, foregn_key: true|
+|user       |string |null: false, foreign_key: true|
+|goods      |string |null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -47,7 +47,7 @@
 ## addressテーブル
 |Column|Type|Options|
 |--------------|-------|-----------------------------|
-|user          |string |null: false, foregn_key: true|
+|user          |string |null: false, foreign_key: true|
 |user_address  |string |null: false                  |
 
 ### Association
