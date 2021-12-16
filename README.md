@@ -1,6 +1,6 @@
 # README
 
-## userテーブル
+## usersテーブル
 |Column             |Type   |Options                  |
 |-------------------|-------|-------------------------|
 |nickname           |string |null: false, unique: true|
@@ -16,39 +16,44 @@
 - has_many :purchases
 - has_many :addresses
 
-## goodsテーブル
+## itemsテーブル
 |Column         |Type   |Options                       |
 |---------------|-------|------------------------------|
-|goods_name     |string |null: false                   |
-|goods_image    |string |null: false                   |
-|goods_category |string |null: false                   |
-|goods_status   |text   |null: false                   |
-|goods_price    |string |null: false                   |
-|goods_payment  |string |null: false                   |
-|goods_area     |string |null: false                   |
-|goods_delivery |string |null: false                   |
-|user           |string |null: false, foreign_key: true|
+|items_name     |string |null: false                   |
+|items_image    |string |null: false                   |
+|items_category |string |null: false                   |
+|items_status   |text   |null: false                   |
+|items_price    |string |null: false                   |
+|items_payment  |string |null: false                   |
+|items_area     |string |null: false                   |
+|items_delivery |string |null: false                   |
+|users          |string |null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
-- has_one :purchase
+- has_one :order
 - has_one :address
 
-## purchaseテーブル
-|Column|Type|Options|
-|-----------|-------|-----------------------------|
-|user       |string |null: false, foreign_key: true|
-|goods      |string |null: false, foreign_key: true|
+## ordersテーブル
+|Column     |Type   |Options                       |
+|-----------|-------|------------------------------|
+|users      |string |null: false, foreign_key: true|
+|items      |string |null: false, foreign_key: true|
+|addresses  |string |null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
-- belongs_to :goods
+- belongs_to :item
 
 ## addressテーブル
 |Column|Type|Options|
-|--------------|-------|-----------------------------|
-|user          |string |null: false, foreign_key: true|
-|user_address  |string |null: false                  |
+|-----------------|-------|-----------------------------|
+|post_code        |string |null: false                  |
+|prefectures      |string |null: false                  |
+|municipalitis    |string |null: false                  |
+|address          |string |null: false                  |
+|building_name    |string |null: false                  |
+|telephone_number |string |null: false                  |
 
 ### Association
 - belongs_to :user
