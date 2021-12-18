@@ -1,19 +1,20 @@
 # README
 
 ## usersテーブル
-|Column             |Type   |Options                  |
-|-------------------|-------|-------------------------|
-|nickname           |string |null: false, unique: true|
-|email              |string |null: false, unique: true|
-|password           |string |null: false              |
-|encrypted_password |string |null: false              |
-|name               |string |null: false              |
-|name_hurigana      |string |null: false              |
-|birthday           |string |null: false              |
+|Column               |Type   |Options                  |
+|---------------------|-------|-------------------------|
+|nickname             |string |null: false              |
+|email                |string |null: false, unique: true|
+|encrypted_password   |string |null: false              |
+|first_name           |string |null: false              |
+|family_name          |string |null: false              |
+|first_name_hurigana  |string |null: false              |
+|family_name_hurigana |string |null: false              |
+|birthday             |date   |null: false              |
 
 ### Association
-- has_many :users
-- has_many :purchases
+- has_many :orders
+- has_many :items
 - has_many :addresses
 
 ## itemsテーブル
@@ -45,17 +46,16 @@
 - belongs_to :user
 - belongs_to :item
 
-## addressテーブル
-|Column|Type|Options|
-|-----------------|-------|-----------------------------|
-|post_code        |string |null: false                  |
-|prefectures      |string |null: false                  |
-|municipalitis    |string |null: false                  |
-|address          |string |null: false                  |
-|building_name    |string |null: false                  |
-|telephone_number |string |null: false                  |
+## addressesテーブル
+|Column           |Type   |Options                       |
+|-----------------|-------|------------------------------|
+|post_code        |string |null: false                   |
+|prefectures      |integer|null: false                   |
+|municipalitis    |string |null: false                   |
+|address          |string |null: false                   |
+|building_name    |string |                              |
+|telephone_number |string |null: false                   |
+|orders           |string |null: false, foreign_key: true|
 
 ### Association
-- belongs_to :user
-- belongs_to :goods
-- belongs_to ::address
+- belongs_to :order
