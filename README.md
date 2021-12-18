@@ -17,16 +17,17 @@
 - has_many :items
 
 ## itemsテーブル
-|Column         |Type      |Options                       |
-|---------------|----------|------------------------------|
-|items_name     |string    |null: false                   |
-|category_id    |integer   |null: false                   |
-|status_id      |integer   |null: false                   |
-|price_id       |integer   |null: false                   |
-|payment_id     |integer   |null: false                   |
-|prefectures_id |integer   |null: false                   |
-|delivery_id    |integer   |null: false                   |
-|user           |references|null: false, foreign_key: true|
+|Column            |Type      |Options                       |
+|------------------|----------|------------------------------|
+|items_name        |string    |null: false                   |
+|items_explanation |text      |null: false                   |
+|category_id       |integer   |null: false                   |
+|status_id         |integer   |null: false                   |
+|price             |integer   |null: false                   |
+|payment_id        |integer   |null: false                   |
+|prefecture_id     |integer   |null: false                   |
+|delivery_id       |integer   |null: false                   |
+|user              |references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -47,7 +48,7 @@
 |Column           |Type       |Options                       |
 |-----------------|-----------|------------------------------|
 |post_code        |string     |null: false                   |
-|prefectures_id   |integer    |null: false                   |
+|prefecture_id    |integer    |null: false                   |
 |municipalitis    |string     |null: false                   |
 |address          |string     |null: false                   |
 |building_name    |string     |                              |
