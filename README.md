@@ -26,7 +26,7 @@
 |items_status   |text   |null: false                   |
 |items_price    |string |null: false                   |
 |items_payment  |string |null: false                   |
-|items_area     |string |null: false                   |
+|prefectures    |integer|null: false                   |
 |items_delivery |string |null: false                   |
 |users          |string |null: false, foreign_key: true|
 
