@@ -15,47 +15,44 @@
 ### Association
 - has_many :orders
 - has_many :items
-- has_many :addresses
 
 ## itemsテーブル
-|Column         |Type   |Options                       |
-|---------------|-------|------------------------------|
-|items_name     |string |null: false                   |
-|items_image    |string |null: false                   |
-|items_category |string |null: false                   |
-|items_status   |text   |null: false                   |
-|items_price    |string |null: false                   |
-|items_payment  |string |null: false                   |
-|prefectures    |integer|null: false                   |
-|items_delivery |string |null: false                   |
-|users          |string |null: false, foreign_key: true|
+|Column         |Type      |Options                       |
+|---------------|----------|------------------------------|
+|items_name     |string    |null: false                   |
+|category_id    |integer   |null: false                   |
+|status_id      |integer   |null: false                   |
+|price_id       |integer   |null: false                   |
+|payment_id     |integer   |null: false                   |
+|prefectures_id |integer   |null: false                   |
+|delivery_id    |integer   |null: false                   |
+|user           |references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
 - has_one :order
-- has_one :address
 
 ## ordersテーブル
-|Column     |Type   |Options                       |
-|-----------|-------|------------------------------|
-|users      |string |null: false, foreign_key: true|
-|items      |string |null: false, foreign_key: true|
-|addresses  |string |null: false, foreign_key: true|
+|Column     |Type       |Options                       |
+|-----------|-----------|------------------------------|
+|user       |references |null: false, foreign_key: true|
+|item       |references |null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
 - belongs_to :item
+- has_one :address
 
 ## addressesテーブル
-|Column           |Type   |Options                       |
-|-----------------|-------|------------------------------|
-|post_code        |string |null: false                   |
-|prefectures      |integer|null: false                   |
-|municipalitis    |string |null: false                   |
-|address          |string |null: false                   |
-|building_name    |string |                              |
-|telephone_number |string |null: false                   |
-|orders           |string |null: false, foreign_key: true|
+|Column           |Type       |Options                       |
+|-----------------|-----------|------------------------------|
+|post_code        |string     |null: false                   |
+|prefectures_id   |integer    |null: false                   |
+|municipalitis    |string     |null: false                   |
+|address          |string     |null: false                   |
+|building_name    |string     |                              |
+|telephone_number |string     |null: false                   |
+|order            |references |null: false, foreign_key: true|
 
 ### Association
 - belongs_to :order
