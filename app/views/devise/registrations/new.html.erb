@@ -8,7 +8,9 @@
   </div>
 
   <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-  <%= render 'shared/error_messages', model: f.object %>
+  <div class="error-alert">
+    <%= render 'devise/shared/error_messages', model: f.object %>
+  </div>
   <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
 
   <div class="form-group">
