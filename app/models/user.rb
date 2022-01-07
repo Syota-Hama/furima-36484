@@ -6,7 +6,6 @@ class User < ApplicationRecord
 
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
 
-  validates :password, presence: true, allow_blank: true
   validates :password, format: { with: VALID_PASSWORD_REGEX, message: 'Password is invalid. Include both letters and numbers' }
 
   with_options presence: true do
