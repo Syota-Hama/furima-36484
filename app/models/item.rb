@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   belongs_to :peyment
   belongs_to :Prefecture
   belongs_to :delivery
+  has_one_attached :item_image
 
   validates :category_id, numericality: { other_than: 1 , message: "can't be blank" }
   validates :status_id, numericality: { other_than: 1 , message: "can't be blank" }
