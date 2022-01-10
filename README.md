@@ -14,9 +14,9 @@
 
 ### Association
 - has_many :orders
-- has_many :items
+- has_many :goods
 
-## itemsテーブル
+## goodsテーブル
 |Column            |Type      |Options                       |
 |------------------|----------|------------------------------|
 |items_name        |string    |null: false                   |
@@ -37,11 +37,11 @@
 |Column     |Type       |Options                       |
 |-----------|-----------|------------------------------|
 |user       |references |null: false, foreign_key: true|
-|item       |references |null: false, foreign_key: true|
+|good       |references |null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
-- belongs_to :item
+- belongs_to :good
 - has_one :address
 
 ## addressesテーブル

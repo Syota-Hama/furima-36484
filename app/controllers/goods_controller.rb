@@ -3,12 +3,12 @@ class GoodsController < ApplicationController
   end
 
   def new
-    @item = Item.new
+    @goods = Good.new
   end
 
   def create
-    @item = Item.new(item_params)
-    if @item.save!
+    @goods = Good.new(good_params)
+    if @goods.save!
       redirect_to root_path
     else
       render :new
@@ -17,7 +17,8 @@ class GoodsController < ApplicationController
 
   private
 
-  def item_params
-    params.require(:item).permit(:item_name, :items_explanation, :category_id, :status_id, :price, :payment_id, :prefecture_id, :delivery_id).merge( user_id: current_user.id)
+  def good_params
+    params.require(:good).permit(:item_name, :items_explanation, :category_id, :status_id, :price, :payment_id, :prefecture_id,
+                                 :delivery_id).merge(user_id: current_user.id)
   end
 end
