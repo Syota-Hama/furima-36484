@@ -8,7 +8,6 @@ class GoodsController < ApplicationController
 
   def create
     @goods = Good.new(good_params)
-    binding.pry
     if @goods.save
       redirect_to root_path
     else
