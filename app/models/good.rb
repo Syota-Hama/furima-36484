@@ -1,8 +1,8 @@
 class Good < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
-  belongs_to :stasus
-  belongs_to :peyment
+  belongs_to :status
+  belongs_to :payment
   belongs_to :Prefecture
   belongs_to :delivery
   has_one_attached :item_image
