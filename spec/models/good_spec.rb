@@ -66,7 +66,7 @@ RSpec.describe Good, type: :model do
       it '販売価格が入力されていなければ出品できない' do
         @goods.price = ''
         @goods.valid?
-        expect(@goods.errors.full_messages).to include('Price is invalid')
+        expect(@goods.errors.full_messages).to include("Price can't be blank")
       end
       it '販売価格が３００円以下では出品できない' do
         @goods.price = '299'
@@ -77,6 +77,16 @@ RSpec.describe Good, type: :model do
         @goods.price = '10000000'
         @goods.valid?
         expect(@goods.errors.full_messages).to include('Price is not included in the list')
+      end
+      it '販売価格に半角数字以外が含まれている場合は出品できない' do
+        @goods.price = '３００'
+        @goods.valid?
+        expect(@goods.errors.full_messages).to include("Price is not included in the list")
+      end
+      it 'userが紐づいていない場合出品できない' do
+        @goods.user = nil
+        @goods.valid?
+        expect(@goods.errors.full_messages).to include("User must exist")
       end
     end
   end

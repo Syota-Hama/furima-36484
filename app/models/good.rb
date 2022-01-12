@@ -1,5 +1,6 @@
 class Good < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :user
   belongs_to :category
   belongs_to :status
   belongs_to :payment
@@ -14,7 +15,8 @@ class Good < ApplicationRecord
   validates :payment_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :delivery_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :price, numericality: { only_integer: true }
+  validates :price, numericality: { only_integer: true, message: "can't be blank" }
   validates :item_image, presence: true
-  validates :price, inclusion: { in: 300..9_999_999 }, format: { with: /\A[0-9]+\z/ }
+  validates :price, inclusion: { in: 300..9_999_999 }
+
 end

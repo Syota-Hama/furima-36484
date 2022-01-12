@@ -10,6 +10,8 @@ FactoryBot.define do
     delivery_id       { Faker::Number.between(from: 2, to: 4) }
     user_id           { Faker::Number.number }
 
+    association :user
+
     after(:build) do |good|
       good.item_image.attach(io: File.open('app/assets/images/flag.png'), filename: 'flag.png')
     end
