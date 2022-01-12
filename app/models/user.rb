@@ -18,4 +18,7 @@ class User < ApplicationRecord
               format: { with: /\A[ァ-ヶー]+\z/, message: 'Last name kana is invalid. Input full-width katakana characters' }
     validates :birthday
   end
+
+  has_many :goods
+
 end
