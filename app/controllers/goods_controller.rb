@@ -2,6 +2,7 @@ class GoodsController < ApplicationController
   before_action :authenticate_user!, only: :new
   
   def index
+    @goods = Good.all
   end
 
   def new
