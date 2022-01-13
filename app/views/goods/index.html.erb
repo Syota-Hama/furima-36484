@@ -127,9 +127,7 @@
       新規投稿商品
     </div>
     <ul class='item-lists'>
-      <%= render partial: 'goods', collection: @goods %>
-      <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-      <%# 商品がある場合は表示されないようにしましょう %>
+      <%= render partial: 'good', collection: @goods %>
       <% if @goods == nil %>
         <li class='list'>
           <%= link_to '#' do %>
@@ -147,10 +145,8 @@
             </div>
           </div>
         </li>
-      <%# //商品がある場合は表示されないようにしましょう %>
       <% end %>
       <% end %>
-      <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
     </ul>
   </div>
   <%# /商品一覧 %>
