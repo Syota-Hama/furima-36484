@@ -1,0 +1,28 @@
+<% payment = [{ id: 1, name: '---' },{ id: 2, name: '着払い(購入者負担)' },{ id: 3, name: '送料込み(出品者負担)' }] %>
+
+<li class='list'>
+  <%= link_to "#" do %>
+  <div class='item-img-content'>
+    <%= image_tag good.image, class: "item-img" %>
+
+    <%# 商品が売れていればsold outを表示しましょう %>
+    <div class='sold-out'>
+      <span>Sold Out!!</span>
+    </div>
+    <%# //商品が売れていればsold outを表示しましょう %>
+
+  </div>
+  <div class='item-info'>
+    <h3 class='item-name'>
+      <%= good.items_name %>
+    </h3>
+    <div class='item-price'>
+      <span><%= good.price %>円<br><%= payment[good.payment_id - 1][:name] %></span>
+      <div class='star-btn'>
+        <%= image_tag "star.png", class:"star-icon" %>
+        <span class='star-count'>0</span>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</li>

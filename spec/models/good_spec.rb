@@ -81,12 +81,12 @@ RSpec.describe Good, type: :model do
       it '販売価格に半角数字以外が含まれている場合は出品できない' do
         @goods.price = '３００'
         @goods.valid?
-        expect(@goods.errors.full_messages).to include("Price is not included in the list")
+        expect(@goods.errors.full_messages).to include('Price is not included in the list')
       end
       it 'userが紐づいていない場合出品できない' do
         @goods.user = nil
         @goods.valid?
-        expect(@goods.errors.full_messages).to include("User must exist")
+        expect(@goods.errors.full_messages).to include('User must exist')
       end
     end
   end
