@@ -1,5 +1,6 @@
 class GoodsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
+  before_action :get_good, only: [:show, :edit, :update]
   before_action :current_user?, only: :edit
 
   def index
@@ -7,15 +8,12 @@ class GoodsController < ApplicationController
   end
 
   def show
-    @good = Good.find(params[:id])
   end
 
   def edit
-    @good = Good.find(params[:id])
   end
 
   def update
-    @good = Good.find(params[:id])
     if @good.update(good_params)
       redirect_to good_path
     else
@@ -37,10 +35,15 @@ class GoodsController < ApplicationController
   end
 
   private
+  
+  def get_good
+    @good = Good.find(params[:id])
+  end
+
 
   def current_user?
-    good = Good.find(params[:id])
-    if current_user.id == good.user_id
+    binding.pry 
+    if current_user.id == @good.user_id
     else
       redirect_to root_path
     end
