@@ -5,13 +5,17 @@ class GoodsController < ApplicationController
     @goods = Good.all.order('created_at DESC')
   end
 
+  def show
+    @good = Good.find(params[:id])
+  end
+
   def new
-    @goods = Good.new
+    @good = Good.new
   end
 
   def create
-    @goods = Good.new(good_params)
-    if @goods.save
+    @good = Good.new(good_params)
+    if @good.save
       redirect_to root_path
     else
       render :new

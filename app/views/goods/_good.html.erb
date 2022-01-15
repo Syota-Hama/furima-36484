@@ -1,7 +1,5 @@
-<% payment = [{ id: 1, name: '---' },{ id: 2, name: '着払い(購入者負担)' },{ id: 3, name: '送料込み(出品者負担)' }] %>
-
 <li class='list'>
-  <%= link_to "#" do %>
+  <%= link_to good_path(good.id), method: :get do %>
   <div class='item-img-content'>
     <%= image_tag good.image, class: "item-img" %>
 
@@ -17,7 +15,7 @@
       <%= good.items_name %>
     </h3>
     <div class='item-price'>
-      <span><%= good.price %>円<br><%= payment[good.payment_id - 1][:name] %></span>
+      <span><%= good.price %>円<br><%= good.payment.name %></span>
       <div class='star-btn'>
         <%= image_tag "star.png", class:"star-icon" %>
         <span class='star-count'>0</span>
