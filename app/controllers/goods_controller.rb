@@ -42,7 +42,6 @@ class GoodsController < ApplicationController
 
 
   def current_user?
-    binding.pry 
     if current_user.id == @good.user_id
     else
       redirect_to root_path
