@@ -1,5 +1,5 @@
 class GoodsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit]
+  before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :get_good, only: [:show, :edit, :update, :destroy]
   before_action :current_user?, only: [:edit, :destroy]
 
