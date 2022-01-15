@@ -1,7 +1,7 @@
 class GoodsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit]
-  before_action :get_good, only: [:show, :edit, :update]
-  before_action :current_user?, only: :edit
+  before_action :authenticate_user!, only: [:new, :edit, :destroy]
+  before_action :get_good, only: [:show, :edit, :update, :destroy]
+  before_action :current_user?, only: [:edit, :destroy]
 
   def index
     @goods = Good.all.order('created_at DESC')
@@ -32,6 +32,11 @@ class GoodsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @good.destroy
+    redirect_to root_path
   end
 
   private
