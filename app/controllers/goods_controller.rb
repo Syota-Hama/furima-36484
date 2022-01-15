@@ -6,16 +6,16 @@ class GoodsController < ApplicationController
   end
 
   def show
-    @goods = Good.find(params[:id])
+    @good = Good.find(params[:id])
   end
 
   def new
-    @goods = Good.new
+    @good = Good.new
   end
 
   def create
-    @goods = Good.new(good_params)
-    if @goods.save
+    @good = Good.new(good_params)
+    if @good.save
       redirect_to root_path
     else
       render :new
