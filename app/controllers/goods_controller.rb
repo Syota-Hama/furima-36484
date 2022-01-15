@@ -2,7 +2,6 @@ class GoodsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
   before_action :current_user?, only: :edit
 
-
   def index
     @goods = Good.all.order('created_at DESC')
   end
