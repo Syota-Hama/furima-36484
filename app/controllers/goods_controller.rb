@@ -5,6 +5,10 @@ class GoodsController < ApplicationController
     @goods = Good.all.order('created_at DESC')
   end
 
+  def show
+    @goods = Good.find(params[:id])
+  end
+
   def new
     @goods = Good.new
   end
