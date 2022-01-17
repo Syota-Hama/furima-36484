@@ -40,11 +40,10 @@ class GoodsController < ApplicationController
   end
 
   private
-  
+
   def get_good
     @good = Good.find(params[:id])
   end
-
 
   def current_user?
     if current_user.id == @good.user_id
