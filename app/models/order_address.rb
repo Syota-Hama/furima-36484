@@ -1,7 +1,7 @@
 class OrderAddress
   
   include ActiveModel::Model
-  attr_accessor :user_id, :post_code, :good_id, :prefecture_id, :municipalitis, :address, :telephone_number, :order_id, :building_name 
+  attr_accessor :user_id, :post_code, :good_id, :prefecture_id, :municipalitis, :address, :telephone_number, :order_id, :building_name, :token, :price
 
   VALID_TELEPHONE_NUMBER_REGEX = /[0-9]{10,11}/
 
@@ -13,6 +13,8 @@ class OrderAddress
     validates :telephone_number, format: { with: VALID_TELEPHONE_NUMBER_REGEX, message: "Telephone number is invalid" }
     validates :user_id
     validates :good_id
+    validates :token
+    validates :price
   end
 
   def save
