@@ -1,10 +1,10 @@
 class OrderAddress
   
-  Include ActiveModel::Model
+  include ActiveModel::Model
   attr_accessor :user_id, :post_code, :good_id, :prefecture_id, :municipalitis, :address, :telephone_number, :order_id, :building_name 
 
-  VALID_POST_CODE_REGEX = \A\d{3}[-]?\d{4}\z
-  VALID_TELEPHONE_NUMBER_REGEX = 0[0-9]{9,10}
+  VALID_POST_CODE_REGEX = /\A\d{3}[-]?\d{4}\z/
+  VALID_TELEPHONE_NUMBER_REGEX = /0[0-9]{9,10}/
 
   with_options presence: true do
     validates :post_code, format: { with: VALID_POST_CODE_REGEX }

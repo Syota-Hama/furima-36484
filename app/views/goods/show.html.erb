@@ -29,7 +29,7 @@
       <%= link_to "削除", good_path(@good.id), method: :delete, class:"item-destroy" %>
     <% elsif  user_signed_in? %>
       <%# 商品が売れていない場合はこちらを表示しましょう %>
-      <%= link_to "購入画面に進む", orders_path,class:"item-red-btn"%>
+      <%= link_to "購入画面に進む", good_orders_path(@good.id),class:"item-red-btn"%>
       <%# //商品が売れていない場合はこちらを表示しましょう %>
     <% end %>
 
