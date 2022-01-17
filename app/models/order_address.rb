@@ -3,15 +3,14 @@ class OrderAddress
   include ActiveModel::Model
   attr_accessor :user_id, :post_code, :good_id, :prefecture_id, :municipalitis, :address, :telephone_number, :order_id, :building_name 
 
-  VALID_POST_CODE_REGEX = /\A\d{3}[-]?\d{4}\z/
-  VALID_TELEPHONE_NUMBER_REGEX = /0[0-9]{9,10}/
+  VALID_TELEPHONE_NUMBER_REGEX = /[0-9]{10,11}/
 
   with_options presence: true do
-    validates :post_code, format: { with: VALID_POST_CODE_REGEX }
+    validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
     validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
     validates :municipalitis
     validates :address
-    validates :telephone_number, format: { with: VALID_TELEPHONE_NUMBER_REGEX }
+    validates :telephone_number, format: { with: VALID_TELEPHONE_NUMBER_REGEX, message: "Telephone number is invalid" }
     validates :user_id
     validates :good_id
   end
