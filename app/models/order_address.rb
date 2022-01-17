@@ -12,8 +12,6 @@ class OrderAddress
     validates :municipalitis
     validates :address
     validates :telephone_number, format: { with: VALID_TELEPHONE_NUMBER_REGEX }
-    validates :order_id
-
     validates :user_id
     validates :good_id
   end
@@ -21,6 +19,7 @@ class OrderAddress
   def save
     order = Order.create(user_id: user_id, good_id: good_id)
 
-    address = Address.create(post_code: post_code, prefecture_id: prefecture_id, municipalitis: municipalitis, address: address, telephone_number: telephone_number, order_id: order.id, building_name: building_name)
+    addresses = Address.create(post_code: post_code, prefecture_id: prefecture_id, municipalitis: municipalitis, 
+                             address: address, telephone_number: telephone_number, order_id: order.id, building_name: building_name)
   end
 end
