@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :get_good, only: [:index, :create]
   before_action :sold_out_page, only: :index
+  before_action :current_user?, only: :index
 
   def index
     @order_address = OrderAddress.new
@@ -38,6 +39,14 @@ class OrdersController < ApplicationController
   def sold_out_page
     if @good.orders.present?
       redirect_to root_path
+    end
+  end
+
+  def current_user?
+    if authenticate_user!
+      if current_user.id == @good.user_id
+        redirect_to root_path
+      end
     end
   end
 end
