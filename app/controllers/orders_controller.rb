@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   before_action :get_good, only: [:index, :create]
-  before_action :sold_out_page, only: :index
   before_action :current_user?, only: :index
+  before_action :sold_out_page, only: :index
+  
 
   def index
     @order_address = OrderAddress.new
