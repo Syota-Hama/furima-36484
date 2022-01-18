@@ -2,6 +2,7 @@ class GoodsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :get_good, only: [:show, :edit, :update, :destroy]
   before_action :current_user?, only: [:edit, :destroy]
+  before_action :get_order, only: [:index, :show]
 
   def index
     @goods = Good.all.order('created_at DESC')
@@ -43,6 +44,10 @@ class GoodsController < ApplicationController
 
   def get_good
     @good = Good.find(params[:id])
+  end
+
+  def get_order
+    @order = Order.all
   end
 
   def current_user?

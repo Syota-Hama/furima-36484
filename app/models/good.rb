@@ -7,7 +7,7 @@ class Good < ApplicationRecord
   belongs_to :Prefecture
   belongs_to :delivery
   has_one_attached :image
-
+  has_many :orders
 
   with_options presence: true do
     validates :items_name, length: { in: 1..40 }
