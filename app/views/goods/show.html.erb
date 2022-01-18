@@ -26,9 +26,11 @@
     </div>
 
     <% if user_signed_in? && current_user.id == @good.user_id %>
-      <%= link_to "商品の編集", edit_good_path(@good.id), method: :get, class: "item-red-btn" %>
-      <p class="or-text">or</p>
-      <%= link_to "削除", good_path(@good.id), method: :delete, class:"item-destroy" %>
+      <% unless @good.orders.present? %>      
+        <%= link_to "商品の編集", edit_good_path(@good.id), method: :get, class: "item-red-btn" %>
+        <p class="or-text">or</p>
+        <%= link_to "削除", good_path(@good.id), method: :delete, class:"item-destroy" %>
+      <% end %>
     <% elsif  user_signed_in? %>
       <% unless @good.orders.present? %>
         <%= link_to "購入画面に進む", good_orders_path(@good.id, :id),class:"item-red-btn"%>
