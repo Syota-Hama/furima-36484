@@ -67,13 +67,11 @@ RSpec.describe OrderAddress, type: :model do
       end
       it 'userが紐づいていないと保存できない' do
         @order_address.user_id = nil
-        binding.pry
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("User can't be blank")
       end
       it 'goodが紐づいていないと保存できない' do
         @order_address.good_id = nil
-        binding.pry
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Good can't be blank")
       end
