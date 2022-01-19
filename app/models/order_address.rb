@@ -1,9 +1,9 @@
 class OrderAddress
   include ActiveModel::Model
-  attr_accessor :user_id, :post_code, :good_id, :prefecture_id, :municipalitis, :address, :telephone_number, :order_id,
-                :building_name, :token, :price
+  attr_accessor :user_id, :post_code, :good_id, :prefecture_id, :municipalitis, :address, :telephone_number,
+                :building_name, :token
 
-  VALID_TELEPHONE_NUMBER_REGEX = /[0-9]{10,11}/
+  VALID_TELEPHONE_NUMBER_REGEX = /\A[0-9]{10,11}\z/
 
   with_options presence: true do
     validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
@@ -14,7 +14,6 @@ class OrderAddress
     validates :user_id
     validates :good_id
     validates :token
-    validates :price
   end
 
   def save
