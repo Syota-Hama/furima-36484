@@ -2,6 +2,9 @@ class GoodsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :get_good, only: [:show, :edit, :update, :destroy]
   before_action :current_user?, only: [:edit, :destroy]
+  before_action :get_order, only: [:index, :show]
+  before_action :sold_out_page, only: :edit
+
 
   def index
     @goods = Good.all.order('created_at DESC')
@@ -40,11 +43,14 @@ class GoodsController < ApplicationController
   end
 
   private
-  
+
   def get_good
     @good = Good.find(params[:id])
   end
 
+  def get_order
+    @order = Order.all
+  end
 
   def current_user?
     if current_user.id == @good.user_id
@@ -56,5 +62,9 @@ class GoodsController < ApplicationController
   def good_params
     params.require(:good).permit(:image, :items_name, :items_explanation, :category_id, :status_id, :price, :payment_id, :prefecture_id,
                                  :delivery_id).merge(user_id: current_user.id)
+  end
+
+  def sold_out_page
+    redirect_to root_path if @good.orders.present?
   end
 end
