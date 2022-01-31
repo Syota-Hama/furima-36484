@@ -1,11 +1,12 @@
 class OrdersController < ApplicationController
   before_action :get_good, only: [:index, :create]
+  before_action :move_to_index
   before_action :current_user?, only: :index
   before_action :sold_out_page, only: :index
   
 
   def index
-    @order_address = OrderAddress.new
+      @order_address = OrderAddress.new
   end
 
   def create
@@ -46,5 +47,11 @@ class OrdersController < ApplicationController
 
   def current_user?
     redirect_to root_path if authenticate_user! && (current_user.id == @good.user_id)
+  end
+
+  def move_to_index
+    unless user_signed_in?
+      redirect_to new_user_session_path
+    end
   end
 end
